@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/quiz_cubit.dart';
 import "package:google_fonts/google_fonts.dart";
 import 'package:flutter_basics/Questions.dart';
+import "package:flutter_bloc/flutter_bloc.dart";
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -10,14 +12,10 @@ class Quiz extends StatefulWidget {
 
 class _QuizState extends State<Quiz> {
   bool quizStarted = false;
-  void handleChange() {
-    setState(() {
-      quizStarted = true;
-    });
-  }
-
+  final quiz_cubit = QuizCubit();
   @override
   Widget build(BuildContext context) {
+    final toggleHere = quiz_cubit.state;
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -47,7 +45,7 @@ class _QuizState extends State<Quiz> {
                   ),
                   const SizedBox(height: 40),
                   ElevatedButton(
-                    onPressed: handleChange,
+                    onPressed: () {},
                     child: Text(
                       "Start Quiz",
                       style: GoogleFonts.titilliumWeb(),
