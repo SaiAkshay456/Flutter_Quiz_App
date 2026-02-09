@@ -8,4 +8,13 @@ abstract class ProductEvent extends Equatable {
 
 class ProductFetch extends ProductEvent {
   const ProductFetch();
+  @override
+  List<Object?> get props => [];
+}
+
+class ProductDetailFetch extends ProductEvent {
+  final String id;
+  const ProductDetailFetch({required this.id});
+  @override
+  List<Object?> get props => [id];
 }

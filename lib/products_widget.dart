@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_basics/bloc/products_bloc/product_bloc.dart';
 import 'package:flutter_basics/bloc/products_bloc/product_state.dart';
+import 'package:flutter_basics/product_details_screen.dart';
 
 class ProductsWidget extends StatelessWidget {
   const ProductsWidget({super.key});
@@ -26,6 +27,16 @@ class ProductsWidget extends StatelessWidget {
                   title: Text(product.title),
                   subtitle: Text('₹ ${product.price}'),
                   leading: CircleAvatar(child: Text(product.title[0])),
+
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) =>
+                            ProductDetailScreen(productId: product.id),
+                      ),
+                    );
+                  },
                 );
               },
             );

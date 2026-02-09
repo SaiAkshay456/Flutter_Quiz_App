@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter_basics/bloc/product_detail_bloc/product_detail_bloc.dart";
 import "package:flutter_basics/bloc/products_bloc/product_bloc.dart";
 import "package:flutter_basics/bloc/products_bloc/product_events.dart";
 import "package:flutter_basics/products_widget.dart";
@@ -21,8 +22,11 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ProductBloc>(
-          create: (BuildContext context) =>
+          create: (context) =>
               ProductBloc(ProductRepository())..add(ProductFetch()),
+        ),
+        BlocProvider<ProductDetailBloc>(
+          create: (context) => ProductDetailBloc(ProductRepository()),
         ),
       ],
       child: const MaterialApp(home: ProductsWidget()),
